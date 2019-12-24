@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row">
+  <ng-container  *ngFor="let p of products$|async; let i=index">
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" [src]="p.imageurl">
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}}</h5>
+              <h3 class="card-title"><i class="fa fa-rupee" style="font-size:24px"></i>{{p.price}}</h3>
+              <a routerLink="" class="btn btn-primary">Add</a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(i+1)%2==0" class="product"></div>
+  </ng-container>
+</div>
+
+
+

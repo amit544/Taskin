@@ -1,0 +1,35 @@
+
+<p>
+  <a routerLink="/admin/product/new" class="btn btn-primary">New product</a>
+</p>
+<p>
+  <input 
+  type="text"
+  #queory
+  (keyup)="filter(queory.value)"
+  class="form-control"
+  placeholder=" Search..">
+</p>
+<!-- {{ (products$ | async |) json }} -->
+<table class="table">
+  <thead>
+    <tr> 
+      <th>Category</th>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of filteredProduct">
+      <td>{{ p.category }}</td>
+      <td>{{ p.title }}</td>
+      <td>{{ p.price }}</td>
+      <td>
+       <button 
+       (click)="addToCart(p.price)"
+       class="btn btn-primary"
+       >Add</button>
+      </td>
+    </tr>
+</tbody>
+</table>

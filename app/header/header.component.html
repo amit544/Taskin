@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <a class="navbar-brand" routerLink="/">Brand</a>
+    <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarCollapse" aria-label="Toggle navigation" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="shoppint-cart">Shopping cart</a>
+        </li>
+        <ng-template #anonymousUser>
+        <li  *ngIf="!(auth.user$ |async)"class="nav-item">
+            <a class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ng-template>   
+        <li  *ngIf="auth.user$ |async as user; else anonymousUser"ngbDropdown class="nav-item dropdown ">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" style="cursor: pointer;">{{user.displayName}}</a>
+               <div ngbDropdownMenu class="dropdown-menu">
+                          <a ngbDropdownItem routerLink="myorder"> My Order</a>
+                          <a ngbDropdownItem routerLink="admin/product">Manager Order</a>
+                          <a ngbDropdownItem  (click)="auth.logout()" style="cursor: pointer;">Logout</a>
+              </div>    
+        </li> 
+      </ul>
+    </div>
+    </nav>
+    
